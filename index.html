@@ -39,6 +39,7 @@
         <li><a href="#troubleshooting"><span class="num">12</span><span>Troubleshooting</span></a></li>
         <li><a href="#faq"><span class="num">13</span><span>FAQ</span></a></li>
         <li><a href="#support"><span class="num">14</span><span>Getting Support</span></a></li>
+        <li><a href="#screenshots"><span class="num">15</span><span>Screenshots</span></a></li>
       </ol>
     </nav>
     <div class="side-foot">by <strong>alithemes</strong> · Built native on the WordPress&nbsp;7.0 AI&nbsp;stack.</div>
@@ -66,6 +67,12 @@
           <span class="pill"><b>6</b> bulk abilities</span>
           <span class="pill">Background processing</span>
         </div>
+        <button class="video-trigger" type="button" id="videoTrigger" aria-label="Watch demo video">
+          <span class="video-trigger__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"></polygon></svg>
+          </span>
+          <span>Watch demo</span>
+        </button>
       </header>
 
       <!-- 01 Intro -->
@@ -396,10 +403,83 @@
         </ul>
       </section>
 
+      <!-- 15 Screenshots -->
+      <section class="block" id="screenshots">
+        <h3 class="sec"><span class="idx">15</span> Screenshots</h3>
+        <p class="muted">A quick visual tour of BulkEngine inside the WordPress admin. Click any screenshot to view it full-size.</p>
+
+        <div class="gallery">
+          <button class="gallery__item" type="button" data-index="0" aria-label="View Dashboard screenshot full-size">
+            <img src="assets/images/01_dashboard.webp" alt="BulkEngine Dashboard — provider status, recent activity, cost-this-month" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Dashboard</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="1" aria-label="View Jobs screenshot full-size">
+            <img src="assets/images/02_jobs.webp" alt="Jobs page — per-item activity log with Change Report and Rollback" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Jobs &amp; Activity Log</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="2" aria-label="View Usage &amp; Costs screenshot full-size">
+            <img src="assets/images/03_cost.webp" alt="Usage and Costs page — monthly breakdown by ability and provider" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Usage &amp; Costs</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="3" aria-label="View Presets screenshot full-size">
+            <img src="assets/images/04_presets.webp" alt="Presets — saved instruction templates per ability" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Presets</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="4" aria-label="View Connectors screenshot full-size">
+            <img src="assets/images/05_connectors.webp" alt="Connectors — 1-click install for Anthropic, OpenAI, Google, DeepSeek" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Connectors</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="5" aria-label="View Settings screenshot full-size">
+            <img src="assets/images/06_settings.webp" alt="Settings — default provider, retention windows, cost thresholds" loading="lazy" width="1280" height="800">
+            <span class="gallery__caption">Settings</span>
+          </button>
+        </div>
+      </section>
+
       <p class="endnote">BulkEngine v1.0.0 — by alithemes. Built native on the WordPress 7.0 AI Client, Abilities API, and Connectors.</p>
 
     </div>
   </div>
 </div>
+
+<!-- ===== Image lightbox for the screenshots gallery ===== -->
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCaption">
+  <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Close lightbox">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous screenshot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next screenshot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="9 6 15 12 9 18"></polyline>
+    </svg>
+  </button>
+  <figure class="lightbox__stage">
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
+  </figure>
+</dialog>
+
+<!-- ===== Video lightbox for the demo ===== -->
+<dialog class="video-lightbox" id="videoLightbox" aria-label="Demo video">
+  <button type="button" class="video-lightbox__close" id="videoLightboxClose" aria-label="Close video">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <div class="video-lightbox__stage">
+    <video class="video-lightbox__player" id="demoVideo" controls preload="metadata" playsinline poster="assets/images/01_dashboard.webp">
+      <source src="assets/video/demo.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</dialog>
 </body>
 </html>
