@@ -1,1 +1,405 @@
-comming soon!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BulkEngine Documentation · v1.0.0</title>
+<meta name="description" content="Official user documentation for BulkEngine — bulk AI content operations for WordPress 7.0+.">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="stylesheet" href="assets/css/docs.css">
+<script src="assets/js/docs.js" defer></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <img class="mark" src="assets/images/logo.svg" alt="" aria-hidden="true" width="42" height="42" />
+      <div>
+        <h1>BulkEngine</h1>
+        <div class="ver">Docs · v1.0.0</div>
+      </div>
+    </div>
+    <p class="tagline">Bulk AI content operations for WordPress 7.0+. Run AI on hundreds of items at once.</p>
+    <div class="navlabel">Contents</div>
+    <nav aria-label="Documentation sections">
+      <ol>
+        <li><a href="#intro"><span class="num">01</span><span>Introduction</span></a></li>
+        <li><a href="#requirements"><span class="num">02</span><span>Requirements</span></a></li>
+        <li><a href="#installation"><span class="num">03</span><span>Installation</span></a></li>
+        <li><a href="#setup"><span class="num">04</span><span>First-Time Setup</span></a></li>
+        <li><a href="#first-job"><span class="num">05</span><span>Your First Bulk Job</span></a></li>
+        <li><a href="#abilities"><span class="num">06</span><span>The Six Abilities</span></a></li>
+        <li><a href="#presets"><span class="num">07</span><span>Presets</span></a></li>
+        <li><a href="#jobs"><span class="num">08</span><span>The Jobs Page</span></a></li>
+        <li><a href="#usage"><span class="num">09</span><span>Usage &amp; Costs</span></a></li>
+        <li><a href="#settings"><span class="num">10</span><span>Settings</span></a></li>
+        <li><a href="#data"><span class="num">11</span><span>Data &amp; Keys</span></a></li>
+        <li><a href="#troubleshooting"><span class="num">12</span><span>Troubleshooting</span></a></li>
+        <li><a href="#faq"><span class="num">13</span><span>FAQ</span></a></li>
+        <li><a href="#support"><span class="num">14</span><span>Getting Support</span></a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">by <strong>alithemes</strong> · Built native on the WordPress&nbsp;7.0 AI&nbsp;stack.</div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰ Menu</button>
+      <span class="tb-title">BulkEngine Docs</span>
+    </div>
+
+    <div class="content">
+
+      <!-- Hero -->
+      <header class="hero">
+        <span class="eyebrow">● User Documentation</span>
+        <h2>Run AI on the <em>whole list</em>, not one item at a time.</h2>
+        <p class="lead">BulkEngine turns repetitive content jobs — SEO meta, WooCommerce copy, brand voice, translation, internal links, featured images — into background jobs you trigger from the standard WordPress bulk-action menu.</p>
+        <div class="pills">
+          <span class="pill">WordPress <b>7.0+</b></span>
+          <span class="pill"><b>BYOK</b> · no subscription</span>
+          <span class="pill">Multi-provider</span>
+          <span class="pill"><b>6</b> bulk abilities</span>
+          <span class="pill">Background processing</span>
+        </div>
+      </header>
+
+      <!-- 01 Intro -->
+      <section class="block" id="intro">
+        <h3 class="sec"><span class="idx">01</span> Introduction</h3>
+        <p>BulkEngine runs AI across many WordPress items at once. Instead of opening each post and clicking an AI button, you <strong>select items in a standard WordPress list, choose a BulkEngine bulk action, and run the whole batch in the background.</strong></p>
+        <p>BulkEngine is built on the WordPress 7.0 AI stack:</p>
+        <ul>
+          <li>It sends every prompt through the core <strong>AI Client</strong>.</li>
+          <li>Each feature is a registered <strong>Ability</strong> with its own permissions.</li>
+          <li>Your API keys live in core <strong>Connectors</strong> — BulkEngine never stores them.</li>
+        </ul>
+        <p>This means you <strong>bring your own AI key (BYOK)</strong>, choose your own provider, pay the provider directly, and keep full control of your data and your costs.</p>
+      </section>
+
+      <!-- 02 Requirements -->
+      <section class="block" id="requirements">
+        <h3 class="sec"><span class="idx">02</span> Requirements</h3>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Requirement</th><th>Minimum</th></tr></thead>
+            <tbody>
+              <tr><td>WordPress</td><td><code>7.0</code></td></tr>
+              <tr><td>PHP</td><td><code>7.4</code></td></tr>
+              <tr><td>Database</td><td>MySQL 5.7+ or MariaDB 10.3+</td></tr>
+              <tr><td>AI provider</td><td>At least one configured in Connectors</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note info"><span class="ic">i</span><div><strong>Why WordPress 7.0?</strong> The AI Client and the Connectors hub are core features introduced in 7.0. On earlier versions, BulkEngine cannot reach an AI provider, so 7.0 is a hard requirement.</div></div>
+        <p>Optional integrations that BulkEngine detects automatically when present: <strong>WooCommerce</strong>, <strong>Yoast SEO</strong>, <strong>Rank Math</strong>, <strong>WPML</strong>, <strong>Polylang</strong>.</p>
+      </section>
+
+      <!-- 03 Installation -->
+      <section class="block" id="installation">
+        <h3 class="sec"><span class="idx">03</span> Installation</h3>
+        <p>You can install BulkEngine like any other plugin.</p>
+        <h5>Option A — Upload through WordPress</h5>
+        <ol class="steps">
+          <li>In your admin, go to <strong>Plugins → Add New → Upload Plugin</strong>.</li>
+          <li>Choose the <code>bulkengine.zip</code> file and click <strong>Install Now</strong>.</li>
+          <li>Click <strong>Activate</strong>.</li>
+        </ol>
+        <h5>Option B — Manual (FTP/SFTP)</h5>
+        <ol class="steps">
+          <li>Unzip the package.</li>
+          <li>Upload the <code>bulkengine</code> folder to <code>/wp-content/plugins/</code>.</li>
+          <li>In <strong>Plugins</strong>, find <strong>BulkEngine</strong> and click <strong>Activate</strong>.</li>
+        </ol>
+        <p>After activation you will see a new <strong>BulkEngine</strong> menu in the admin sidebar.</p>
+      </section>
+
+      <!-- 04 Setup -->
+      <section class="block" id="setup">
+        <h3 class="sec"><span class="idx">04</span> First-Time Setup</h3>
+        <p>BulkEngine needs an AI provider before it can do anything. Setup takes about two minutes.</p>
+
+        <h4>Step 1 — Open the Dashboard</h4>
+        <p>Go to <strong>BulkEngine → Dashboard</strong>. The <strong>AI Providers</strong> panel shows which providers are installed and connected.</p>
+
+        <h4>Step 2 — Install a provider plugin (1-click)</h4>
+        <p>In the AI Providers panel, click <strong>Install</strong> next to the provider you want:</p>
+        <ul>
+          <li><strong>Anthropic</strong> — Claude (text)</li>
+          <li><strong>OpenAI</strong> — GPT (text), DALL·E (images)</li>
+          <li><strong>Google</strong> — Gemini (text), Imagen (images)</li>
+          <li><strong>DeepSeek</strong> — DeepSeek-V3 chat &amp; R1 reasoner (text only, lowest cost per token)</li>
+        </ul>
+        <p>BulkEngine installs the official provider plugin for you. You can install more than one. Any other AI provider that ships a WordPress AI Client connector plugin will also appear in BulkEngine's settings automatically once it's active — no plugin update required.</p>
+        <div class="note warn"><span class="ic">!</span><div>The <strong>Auto Featured Image</strong> ability needs a provider that can generate images (currently OpenAI or Google). Anthropic and DeepSeek are text-only — if you only install those, the five text abilities work but Auto Featured Image will not.</div></div>
+
+        <h4>Step 3 — Add your API key in Connectors</h4>
+        <ol class="steps">
+          <li>Go to <strong>WordPress → Connectors</strong> (a core WordPress screen).</li>
+          <li>Find the provider you installed.</li>
+          <li>Paste your API key from that provider's own dashboard and save.</li>
+        </ol>
+        <div class="note info"><span class="ic">i</span><div><strong>You get the key from the provider, not from us.</strong> BulkEngine never sees or stores it. You are billed by the provider directly.</div></div>
+
+        <h4>Step 4 — Confirm the connection</h4>
+        <p>Return to <strong>BulkEngine → Dashboard</strong>. The provider should now show as <strong>Connected</strong>. You are ready to run jobs.</p>
+      </section>
+
+      <!-- 05 First job -->
+      <section class="block" id="first-job">
+        <h3 class="sec"><span class="idx">05</span> Running Your First Bulk Job</h3>
+        <p>Every ability runs the same way — from the bulk-action menu of a WordPress list screen.</p>
+        <ol class="steps">
+          <li>Open a list screen: <strong>Posts</strong>, <strong>Pages</strong>, or (with WooCommerce) <strong>Products</strong>.</li>
+          <li>Tick the checkboxes for the items you want to process. You can select the whole page at once.</li>
+          <li>Open the <strong>Bulk actions</strong> dropdown at the top of the list. BulkEngine's actions are grouped and prefixed so they're easy to find (for example, <em>BulkEngine: SEO Meta</em>).</li>
+          <li>Choose the action and click <strong>Apply</strong>.</li>
+          <li>A confirmation panel appears showing <strong>how many items</strong> will be processed, the <strong>options</strong> for that ability, and an <strong>estimated cost</strong>.</li>
+          <li>Adjust any options, then click <strong>Run</strong>.</li>
+        </ol>
+        <p>The job is now queued. You can leave the page — processing continues in the background. Track progress on <strong>BulkEngine → Jobs</strong>.</p>
+        <div class="note tip"><span class="ic">✓</span><div><strong>Tip:</strong> Start with a small selection (3–5 items) the first time you use an ability, review the results, then scale up to large batches with confidence.</div></div>
+      </section>
+
+      <!-- 06 Abilities -->
+      <section class="block" id="abilities">
+        <h3 class="sec"><span class="idx">06</span> The Six Abilities</h3>
+        <p class="muted">Each ability lists what it does, the options you can set, and what it writes.</p>
+
+        <div class="ability" data-n="1">
+          <h4><span class="badge seo">SEO</span> Bulk SEO Meta Generator</h4>
+          <p>Generates an SEO title and meta description for posts, pages, and custom post types (including products).</p>
+          <p><strong>Auto-detection:</strong> Writes to <strong>Yoast SEO</strong> or <strong>Rank Math</strong> fields if either is active; otherwise uses generic post meta.</p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>Option</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Target length</td><td>155 chars</td><td>Meta description length (50–200).</td></tr>
+              <tr><td>Include SEO title</td><td>On</td><td>Also generate an SEO title (10–60 chars).</td></tr>
+              <tr><td>Regenerate existing</td><td>Off</td><td>If off, items that already have meta are <strong>skipped</strong>, not overwritten.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="req"><b>Runs on:</b> Posts, Pages, CPTs, Products. &nbsp;·&nbsp; <b>Requires:</b> capability to edit the item type.</p>
+        </div>
+
+        <div class="ability" data-n="2">
+          <h4><span class="badge wc">WooCommerce</span> WooCommerce Content Enrichment</h4>
+          <p>Generates product copy for WooCommerce, using your existing product attributes and categories for accuracy.</p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>Option</th><th>Choices</th><th>Default</th></tr></thead>
+            <tbody>
+              <tr><td>Fields to write</td><td>Long description, Short description, SEO meta</td><td>Long + Short description</td></tr>
+              <tr><td>Selling angle</td><td>Storytelling, Technical, FOMO, Minimalist, Luxury</td><td>—</td></tr>
+            </tbody>
+          </table></div>
+          <p class="req"><b>Runs on:</b> Products. &nbsp;·&nbsp; <b>Requires:</b> WooCommerce active and product-edit capability.</p>
+        </div>
+
+        <div class="ability" data-n="3">
+          <h4><span class="badge">Content</span> Brand Voice Transformer</h4>
+          <p>Rewrites existing content to match a chosen brand voice. It <strong>preserves facts, links, shortcodes, code blocks, and Gutenberg block structure</strong> — only the tone changes.</p>
+          <h5>Built-in voice presets</h5>
+          <ul>
+            <li><strong>Friendly Tech Blog</strong> — second person, light humour, short paragraphs, no jargon.</li>
+            <li><strong>Professional B2B</strong> — confident, authoritative, insight-led.</li>
+            <li><strong>Conversational Lifestyle</strong> — warm and approachable.</li>
+            <li><strong>Luxury / Premium</strong> — refined, aspirational.</li>
+          </ul>
+          <p class="req"><b>Runs on:</b> Posts, Pages. &nbsp;·&nbsp; <b>Requires:</b> edit capability for the item.</p>
+        </div>
+
+        <div class="ability" data-n="4">
+          <h4><span class="badge seo">SEO</span> Internal Link Architect</h4>
+          <p>Analyses a post and <strong>suggests</strong> internal links to related content on your site, with descriptive anchor text and a relevance score. It builds genuine topic clusters and avoids over-linking.</p>
+          <p><strong>Output:</strong> A list of suggestions (target post, anchor text, context snippet, relevance score) per item.</p>
+          <p class="req"><b>Runs on:</b> Posts, Pages. &nbsp;·&nbsp; <b>Requires:</b> edit capability for the item.</p>
+        </div>
+
+        <div class="ability" data-n="5">
+          <h4><span class="badge lang">Translate</span> Bulk Translator</h4>
+          <p>Translates an item into a target language while <strong>preserving Gutenberg blocks, shortcodes, and HTML</strong>.</p>
+          <p><strong>Supported languages (v1.0):</strong> English, Spanish, French, German, Italian, Portuguese&nbsp;(Brazil), Japanese, Korean, Chinese&nbsp;(Simplified), Vietnamese.</p>
+          <h5>Modes</h5>
+          <ul>
+            <li><strong>Create</strong> — make a new translated item.</li>
+            <li><strong>Update</strong> — write the translation into an existing item.</li>
+            <li><strong>Save as draft</strong> — create a draft translation for review before publishing.</li>
+          </ul>
+          <p><strong>Fields you can translate:</strong> title, content, excerpt, SEO meta. &nbsp; <strong>Multilingual plugins:</strong> works with <strong>WPML</strong> and <strong>Polylang</strong> — translations are linked in your language switcher.</p>
+          <p class="req"><b>Runs on:</b> Posts, Pages, Products. &nbsp;·&nbsp; <b>Requires:</b> edit capability for the item type.</p>
+        </div>
+
+        <div class="ability" data-n="6">
+          <h4><span class="badge img">Image</span> Auto Featured Image</h4>
+          <p>Generates a featured image from the item's title and excerpt and sets it as the featured image.</p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>Option</th><th>Choices</th></tr></thead>
+            <tbody>
+              <tr><td>Style</td><td>Photorealistic, Illustration, Abstract, Minimalist, Watercolor</td></tr>
+              <tr><td>Aspect ratio</td><td>16:9, 4:3, 1:1, 3:2</td></tr>
+            </tbody>
+          </table></div>
+          <p class="req"><b>Requires:</b> an image-capable provider (OpenAI or Google) configured in Connectors, plus upload/edit capability.</p>
+        </div>
+      </section>
+
+      <!-- 07 Presets -->
+      <section class="block" id="presets">
+        <h3 class="sec"><span class="idx">07</span> Presets</h3>
+        <p>Presets are <strong>saved instruction templates</strong> so editors can run jobs without writing prompts.</p>
+        <p><strong>Using a preset:</strong> When you launch an ability, pick a preset from the dropdown in the confirmation panel instead of configuring options manually.</p>
+        <p><strong>Built-in presets:</strong> BulkEngine ships with <strong>eight presets across five abilities</strong> (for example <em>SEO Meta — E-commerce Product</em>, <em>Brand Voice — Friendly &amp; Casual</em>, <em>Translate — European Languages</em>). You can mark one preset as the <strong>default</strong> for each ability.</p>
+        <p><strong>Default-preset auto-apply:</strong> When you launch an ability from a bulk action on the Posts, Pages, or Products list, BulkEngine automatically attaches the default preset for that ability — so editors get your house style every time without having to remember to pick one. The notice after the action confirms which preset was used and gives you a one-click <strong>View job</strong> link.</p>
+        <div class="note tip"><span class="ic">✓</span><div>Presets make it safe to hand bulk AI jobs to non-technical team members — they choose a preset, you control the instructions.</div></div>
+      </section>
+
+      <!-- 08 Jobs -->
+      <section class="block" id="jobs">
+        <h3 class="sec"><span class="idx">08</span> The Jobs Page</h3>
+        <p><strong>BulkEngine → Jobs</strong> is where you track and manage every bulk run.</p>
+        <h5>For each job you see</h5>
+        <ul>
+          <li><strong>Status</strong> — queued, running, completed, failed, or cancelled.</li>
+          <li><strong>Progress</strong> — items processed out of total (e.g. 350 / 500).</li>
+          <li><strong>Ability</strong> and the <strong>provider + model</strong> that actually ran the job (recorded per call, so you'll still know in a year whether yesterday's batch was Claude, GPT, Gemini, or DeepSeek).</li>
+          <li><strong>Preset</strong> used, if any.</li>
+          <li><strong>Cost</strong> — estimated and actual.</li>
+        </ul>
+        <p><strong>Per-item activity log:</strong> Open a job to see every item's outcome — <strong>success, failed, or skipped</strong> — with input/output snippets for audit. This is how you find the exact items that didn't process and why.</p>
+        <p><strong>Cancel a running job:</strong> Click <strong>Cancel</strong>. Items already processed keep their results; pending items are skipped.</p>
+        <p><strong>Re-run failed items:</strong> When some items fail, you can re-run only those items rather than the whole batch.</p>
+
+        <h4>Change Report — see exactly what the AI changed</h4>
+        <p>Every successful item has a <strong>View changes</strong> link in its log row. Click it to expand a side-by-side <strong>before / after diff</strong> for each field the AI touched — meta description, SEO title, content, excerpt, product description, internal-link suggestions, and so on.</p>
+        <p>You don't have to open 500 posts to verify what changed. The diff is right in the log, per item.</p>
+
+        <h4>Rollback — undo AI changes safely</h4>
+        <p>Two scopes are available from a job's detail screen:</p>
+        <ul>
+          <li><strong>Rollback per item.</strong> Each successful row has a <strong>Rollback</strong> button that restores the original value. Use it to undo a single suggestion you don't like while keeping the rest.</li>
+          <li><strong>Roll back entire job.</strong> The button at the top of the job page reverts every item in the batch in one click.</li>
+        </ul>
+        <p>BulkEngine snapshots the original value <em>before</em> writing — rollback restores the exact previous state, not a guess.</p>
+        <div class="note warn"><span class="ic">!</span><div><strong>Concurrent-edit detection:</strong> If you (or another user, or another plugin) edited the item by hand after the AI ran, BulkEngine warns you before overwriting that manual edit. You can confirm to proceed, or skip the item.</div></div>
+        <p>Items that were rolled back show a <strong>Rolled back</strong> badge in the activity log so the audit trail stays clear.</p>
+
+        <h4>Refine — edit AI output inline (no extra tokens)</h4>
+        <p>If you like 90% of what the AI wrote and want to tweak the rest, click <strong>Refine</strong> on any successful item. The activity log row expands into an editable form with one field per AI-written value. Save, and your edit is applied directly to the item — <strong>no second AI call, no extra token cost</strong>.</p>
+        <p>The before/after diff updates to reflect your refined value, so the change history stays accurate.</p>
+        <div class="note tip"><span class="ic">✓</span><div><strong>Workflow:</strong> review the diff → accept (do nothing), refine (edit inline), or rollback. Per item or per job — your choice on every batch.</div></div>
+      </section>
+
+      <!-- 09 Usage -->
+      <section class="block" id="usage">
+        <h3 class="sec"><span class="idx">09</span> Usage &amp; Costs</h3>
+        <p><strong>BulkEngine → Usage</strong> shows what your AI spend looks like.</p>
+        <ul>
+          <li><strong>Month-to-date total</strong> estimated cost.</li>
+          <li><strong>Breakdown by ability</strong> — which features cost the most.</li>
+          <li><strong>Breakdown by provider and model.</strong></li>
+          <li><strong>Recent records</strong> of individual calls.</li>
+        </ul>
+        <div class="note info"><span class="ic">i</span><div><strong>How costs are estimated:</strong> BulkEngine totals the input + output tokens of each call and multiplies by a built-in pricing table for that provider/model. Estimates are close, but your provider's invoice is the source of truth — always check the provider dashboard for billing.</div></div>
+      </section>
+
+      <!-- 10 Settings -->
+      <section class="block" id="settings">
+        <h3 class="sec"><span class="idx">10</span> Settings</h3>
+        <p><strong>BulkEngine → Settings</strong> controls defaults used across the plugin.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Setting</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Default provider</strong></td><td>Used by any ability that hasn't pinned its own provider.</td></tr>
+            <tr><td><strong>Cost Warning Threshold (USD)</strong></td><td>Jobs whose estimate exceeds this are blocked until you confirm. <strong>Default: $10.</strong> Set to 0 to disable.</td></tr>
+            <tr><td><strong>Retention windows</strong></td><td>How long job records and logs are kept before cleanup.</td></tr>
+            <tr><td><strong>Data on uninstall</strong></td><td>Choose whether to keep or remove BulkEngine data when the plugin is deleted.</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Per-ability provider:</strong> Each ability can pin its own provider/model — for example a cheaper model for SEO meta, a stronger one for long WooCommerce descriptions.</p>
+      </section>
+
+      <!-- 11 Data -->
+      <section class="block" id="data">
+        <h3 class="sec"><span class="idx">11</span> How Your Data &amp; Keys Are Handled</h3>
+        <p>This matters, so it's stated plainly:</p>
+        <ul>
+          <li><strong>API keys</strong> live in <strong>WordPress Connectors</strong> (core). BulkEngine never reads, writes, or transmits them.</li>
+          <li><strong>Your content</strong> is sent only to the <strong>AI provider you configured</strong> (Anthropic, OpenAI, Google, or DeepSeek) for processing. <strong>Nothing is sent to the plugin author's servers.</strong> The provider's privacy policy applies to that processing.</li>
+          <li><strong>Billing</strong> is between you and your provider. BulkEngine adds no markup and takes no subscription.</li>
+          <li><strong>Multisite:</strong> each site keeps its own jobs, presets, settings, and Connectors.</li>
+        </ul>
+      </section>
+
+      <!-- 12 Troubleshooting -->
+      <section class="block" id="troubleshooting">
+        <h3 class="sec"><span class="idx">12</span> Troubleshooting</h3>
+
+        <h5>The BulkEngine bulk actions don't appear in the dropdown.</h5>
+        <p class="muted">Confirm you're on a supported list screen (Posts, Pages, or Products) and that your user role has edit capability for that item type. Products only appear if WooCommerce is active.</p>
+
+        <h5>A job is stuck at "queued" and never starts.</h5>
+        <p class="muted">Background jobs run on WordPress cron via Action Scheduler. On low-traffic sites cron can be slow. Visit the site front-end to trigger cron, or set up a real server cron. Check <strong>Tools → Scheduled Actions</strong> if available.</p>
+
+        <h5>A job shows "failed" for many items.</h5>
+        <p class="muted">Open the job's activity log to read the per-item reason. Common causes: the provider isn't connected (check Connectors), the key has no credit/quota, or the items were skipped because they already had content and <strong>Regenerate existing</strong> was off.</p>
+
+        <h5>A job stalled and won't finish.</h5>
+        <p class="muted">If a job hangs for more than two hours, BulkEngine automatically marks it failed so you can re-run only the failed items.</p>
+
+        <h5>Auto Featured Image does nothing.</h5>
+        <p class="muted">This ability needs an image-capable provider (OpenAI or Google) connected. Anthropic alone cannot generate images.</p>
+
+        <h5>The cost estimate blocked my job.</h5>
+        <p class="muted">The estimate exceeded your Cost Warning Threshold. Confirm to proceed, or raise/disable the threshold in <strong>Settings</strong>.</p>
+
+        <h5>Translations aren't linked in my language switcher.</h5>
+        <p class="muted">Make sure WPML or Polylang is active and configured <em>before</em> running the translator, and that the target language is set up in that plugin.</p>
+      </section>
+
+      <!-- 13 FAQ -->
+      <section class="block" id="faq">
+        <h3 class="sec"><span class="idx">13</span> FAQ</h3>
+        <h5>Is there a subscription?</h5>
+        <p class="muted">No — one-time purchase. You pay your provider directly.</p>
+        <h5>Do you store my API key?</h5>
+        <p class="muted">No. Keys live in core Connectors.</p>
+        <h5>Which providers work?</h5>
+        <p class="muted">Anthropic, OpenAI, Google, and DeepSeek (1-click install). Any other provider with a WordPress AI Client connector plugin works automatically — it appears in BulkEngine's settings the moment it's active, no BulkEngine update required.</p>
+        <h5>Does it work with my SEO/translation plugins?</h5>
+        <p class="muted">Yoast and Rank Math meta are detected automatically; WPML and Polylang are supported by the translator.</p>
+        <h5>Can I run AI on custom post types?</h5>
+        <p class="muted">Yes — SEO Meta runs on CPTs as well as posts and pages.</p>
+        <h5>Can I undo what the AI changed?</h5>
+        <p class="muted">Yes. Each item has a per-row <strong>Rollback</strong> button in the activity log; the job page also has a <strong>Roll back entire job</strong> button at the top. BulkEngine snapshots the original value before every AI write, so rollback restores the exact previous state. If the item was edited by hand after the AI ran, BulkEngine warns you before overwriting that edit.</p>
+        <h5>Can I tweak the AI output without re-running the job?</h5>
+        <p class="muted">Yes — click <strong>Refine</strong> on any successful item, edit the value inline, and save. No second API call, no extra token cost.</p>
+        <h5>Can I cancel mid-job?</h5>
+        <p class="muted">Yes, from the Jobs page. Processed items are kept.</p>
+        <h5>Does my server staying on matter?</h5>
+        <p class="muted">No — jobs persist and resume after a reboot via Action Scheduler.</p>
+        <h5>Multisite?</h5>
+        <p class="muted">Yes, per-site. No cross-site network dashboard in v1.0.</p>
+      </section>
+
+      <!-- 14 Support -->
+      <section class="block" id="support">
+        <h3 class="sec"><span class="idx">14</span> Getting Support</h3>
+        <p>Open a support ticket from the link on the plugin's item page. To get help fastest, include:</p>
+        <ul>
+          <li>Your <strong>WordPress version</strong> and <strong>PHP version</strong></li>
+          <li>The <strong>ability</strong> you used</li>
+          <li>The <strong>Job ID</strong> from <strong>BulkEngine → Jobs</strong></li>
+          <li>A description of what you expected vs. what happened</li>
+        </ul>
+      </section>
+
+      <p class="endnote">BulkEngine v1.0.0 — by alithemes. Built native on the WordPress 7.0 AI Client, Abilities API, and Connectors.</p>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
